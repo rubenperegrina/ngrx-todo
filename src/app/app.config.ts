@@ -1,5 +1,15 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+
+//NgRx
+import { StoreModule } from '@ngrx/store';
+import { todoReducer } from './components/todo.reducer';
 
 export const appConfig: ApplicationConfig = {
-  providers: []
+  providers: [
+    importProvidersFrom(
+      StoreModule.forRoot({
+        todos: todoReducer,
+      }),
+    ),
+  ],
 };
